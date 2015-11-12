@@ -46,7 +46,11 @@ exports.init = function(options){
 exports.search = function(id, options){
   var src = mid.path(id, options);
 
-  return exports.get(src);
+  if(exports.has(src)){
+    return exports.get(src);
+  }else{
+    console.error('not find file', id);
+  }
 };
 
 /**
