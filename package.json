@@ -1,19 +1,19 @@
 {
-  "name": "made-build-file",
+  "name": "made-pack-script",
   "version": "0.2.0",
-  "description": "made build file storage",
+  "description": "made pack script",
   "main": "index.js",
   "scripts": {
     "test": "node ./test/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simonhao/made-build-file.git"
+    "url": "git+https://github.com/simonhao/made-pack-script.git"
   },
   "author": "simonhao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/simonhao/made-build-file/issues"
+    "url": "https://github.com/simonhao/made-pack-script/issues"
   },
-  "homepage": "https://github.com/simonhao/made-build-file#readme"
+  "homepage": "https://github.com/simonhao/made-pack-script#readme"
 }
