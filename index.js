@@ -14,8 +14,8 @@ var extend = require('extend');
 
 var file_list = {};
 
-var base_path = path.join(process.cwd(), 'src');
-var dist_path = path.join(process.cwd(), 'dist');
+var base_path = exports.base_path = path.join(process.cwd(), 'src');
+var dist_path = exports.dist_path = path.join(process.cwd(), 'dist');
 
 var static_path = path.join(dist_path, 'static');
 var temp_path   = path.join(dist_path, 'temp');
@@ -28,8 +28,8 @@ var server = {
 };
 
 exports.init = function(options){
-  base_path = options.basedir;
-  dist_path = options.distdir;
+  exports.base_path = base_path = options.basedir;
+  exports.dist_path = dist_path = options.distdir;
 
   extend(server, options.server);
 
