@@ -14,9 +14,11 @@ var extend = require('extend');
 
 var file_list = {};
 
-var base_path   = path.join(process.cwd(), 'src');
-var dist_path   = path.join(process.cwd(), 'dist');
+var base_path = path.join(process.cwd(), 'src');
+var dist_path = path.join(process.cwd(), 'dist');
+
 var static_path = path.join(dist_path, 'static');
+var temp_path   = path.join(dist_path, 'temp');
 
 var server = {
   web_domain: '',
@@ -30,7 +32,9 @@ exports.init = function(options){
   dist_path = options.distdir;
 
   extend(server, options.server);
+
   static_path = path.join(dist_path, 'static');
+  temp_path   = path.join(dist_path, 'temp');
 };
 
 /**
@@ -77,6 +81,14 @@ exports.set = function(src){
   }else{
     return file_list[src] = new FileInfo(src);
   }
+};
+/**
+ * 获取临目录
+ * @param  {String} id 临时文件夹名
+ * @return {String}    临时文件夹路径
+ */
+exports.temp = function(id){
+  return path.join(temp_path, id);
 };
 
 
