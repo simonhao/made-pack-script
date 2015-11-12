@@ -127,9 +127,9 @@ FileInfo.prototype.dist = function(){
   var dist_path = path.join(static_path, relative_path);
   var dist_info;
 
-  if(this.md5){
+  if(this._md5){
     dist_info = path.parse(dist_path);
-    dist_info.base = dist_info.name + '.' + this.md5 + dist_info.ext;
+    dist_info.base = dist_info.name + '.' + this._md5 + dist_info.ext;
 
     dist_path = path.format(dist_info);
   }
