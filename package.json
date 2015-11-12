@@ -1,0 +1,19 @@
+{
+  "name": "made-build-file",
+  "version": "0.1.0",
+  "description": "made build file storage",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonhao/made-build-file.git"
+  },
+  "author": "simonhao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonhao/made-build-file/issues"
+  },
+  "homepage": "https://github.com/simonhao/made-build-file#readme"
+}
