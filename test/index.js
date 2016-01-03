@@ -8,7 +8,7 @@
 
 var Pack = require('../lib/pack.js');
 var fs = require('fs');
-
+var script_pack = require('../index.js');
 
 var made_script = require('made-script');
 var made_view   = require('made-view');
@@ -38,9 +38,11 @@ comm_pack.require(['comm/base', 'comm/net', 'extend']);
 
 fs.writeFileSync(__dirname + '/comm_lib.js', comm_pack.bundle());
 
-var index_pack = new Pack(options, transform);
 
-index_pack.require('page/index');
-index_pack.external(['comm/base', 'comm/net', 'extend']);
+var result = script_pack({
+  basedir: options.basedir,
+  require:['page/index'],
+  external: ['comm/base', 'comm/net', 'extend']
+}, transform);
 
-fs.writeFileSync(__dirname + '/page_lib.js', index_pack.bundle());
+fs.writeFileSync(__dirname + '/page_lib.js', result);
