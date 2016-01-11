@@ -44,7 +44,7 @@ var net = require('comm/net')._default;
 var extend = require('extend');
 var base = require('comm/base')._default;
 var bind = require('comm/bind')._default;
-var Human = __made.create_class(function Human(name) {
+var Human = __made_script.create_class(function Human(name) {
   this._name = name;
 }, [
   {
@@ -57,7 +57,7 @@ var Human = __made.create_class(function Human(name) {
   },
   {}
 ], Module);
-var Person = __made.create_class(function Person(name, age) {
+var Person = __made_script.create_class(function Person(name, age) {
   Human.call(this, name);
   this._age = age;
 }, [

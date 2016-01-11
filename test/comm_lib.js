@@ -54,8 +54,8 @@ require = (function(modules, entry){
  * @date:   2016-01-03 13:11:22
  */
 'use strict';
-var bind = require('bind');
-var alert = require('alert.tpl');
+var bind = require('comm/bind');
+var alert = require('comm/alert.tpl');
 },"comm/bind": function(require, module, exports){
 /**
  * bind
@@ -63,9 +63,65 @@ var alert = require('alert.tpl');
  * @date:   2016-01-03 13:11:31
  */
 'use strict';
-var net = require('net');
+var net = require('comm/net');
 },"comm/alert.tpl": function(require, module, exports){
-exports._default = function(__made_locals){var __made_buf = [];var __made_block = __made_block || {};var __made_locals = __made_locals || {};;(function(){__made_buf.push("\n<div id=\"comm-alert.tpl-wrap\" class=\"comm-alert.tpl-wrap\">\n  <div>content</div>\n</div>");})();return __made_buf.join("");}
+var __made_view = require('made-view/runtime');
+module.exports = function (__made_locals) {
+  var __made_buf = [];
+  var __made_block = __made_block || {};
+  var __made_locals = __made_locals || {};
+  ;
+  (function () {
+    __made_buf.push('\n<div id="comm-alert.tpl-wrap" class="comm-alert.tpl-wrap">\n  <div>content</div>\n</div>');
+  }());
+  return __made_buf.join('');
+};
+},"made-view/runtime": function(require, module, exports){
+/**
+ * Made-View Runtime
+ * @author: SimonHao
+ * @date:   2015-10-09 15:11:34
+ */
+'use strict';
+exports.encode = function (html) {
+  var result = String(html).replace(/[&<>"]/g, function (escape_char) {
+    var encode_map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;'
+    };
+    return encode_map[escape_char] || escape_char;
+  });
+  if (result === '' + html)
+    return html;
+  else
+    return result;
+};
+exports.each = function (list, callback) {
+  if (Array.isArray(list)) {
+    for (var i = 0; i < list.length; i++) {
+      callback(list[i], i);
+    }
+  } else if (typeof list === 'object' && list !== null) {
+    Object.keys(list).forEach(function (key) {
+      callback(list[key], key);
+    });
+  } else {
+    callback(list, 0);
+  }
+};
+exports.block = function (blocks, block_name, block_content) {
+  var content = blocks[block_name];
+  if (content) {
+    content[0] && content[0]();
+    content[1] && content[1]();
+    if (!content[1]) {
+      block_content();
+    }
+    content[2] && content[2]();
+  }
+};
 },"extend": function(require, module, exports){
 'use strict';
 var hasOwn = Object.prototype.hasOwnProperty;

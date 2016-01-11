@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/simonhao/made-pack-script#readme",
   "dependencies": {
+    "escodegen": "1.7.1",
+    "esprima": "^2.7.1",
+    "estraverse": "^4.1.1",
     "extend": "^3.0.0",
-    "made-view": "^0.7.0",
-    "made-script": "^0.3.0"
+    "made-script": "^0.3.0",
+    "made-view": "^0.7.0"
   }
 }

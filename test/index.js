@@ -27,7 +27,7 @@ var transform = {
   'tpl': function(filename){
     var result = made_view.compile_client_file(filename, options);
 
-    return 'exports._default = ' + result;
+    return result;
   }
 };
 
@@ -35,8 +35,8 @@ var comm_pack = new Pack(options, transform);
 
 comm_pack.add('comm/fetch');
 comm_pack.require(['comm/base', 'comm/net', 'extend']);
-
-fs.writeFileSync(__dirname + '/comm_lib.js', comm_pack.bundle());
+console.log(comm_pack.pack());
+/*fs.writeFileSync(__dirname + '/comm_lib.js', comm_pack.bundle());*/
 
 
 var result = script_pack({
